@@ -11,10 +11,10 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "TB_CATEGORIA")
 public class Categoria implements Serializable, Teste {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    private int codigo;    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int codigo;
     private String descricao;
 
     @Override
@@ -44,7 +44,7 @@ public class Categoria implements Serializable, Teste {
         return true;
     }
 
-    public Categoria(String descricao){
+    public Categoria(String descricao) {
         this.descricao = descricao;
     }
 
@@ -55,11 +55,11 @@ public class Categoria implements Serializable, Teste {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
-    public Categoria(){
+
+    public Categoria() {
 
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -70,6 +70,18 @@ public class Categoria implements Serializable, Teste {
 
     @Override
     public boolean validar() {
-      return true;
+
+        // Verifica se foi cadastrado a descrição
+        if (this.getDescricao() == null) {
+            return false;
+        } 
+        // Verifica se esta cadastrando o codigo certo
+        if (this.getCodigo() < 0){
+            return false;
+        }
+        // Caso passe pelas verificações retorna true;
+        else {
+            return true;
+        }
     }
 }

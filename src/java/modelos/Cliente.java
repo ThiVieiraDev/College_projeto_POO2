@@ -144,6 +144,11 @@ public class Cliente implements Serializable, Teste {
         if(this.getTelefone() == null){
             return false;
         }
+        // Verifica se esta cadastrando o codigo certo
+        if (this.getCodigo() < 0) {
+            return false;
+        }
+        // Caso passe pelas verificações retorna true;
         else
         {
           return true;
