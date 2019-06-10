@@ -1,0 +1,47 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                    
+    <ui:define name="title">
+        <h:outputText value="Cadastro de categorias"/>
+    </ui:define>
+    
+    <h:form id="formCategoria">
+        <p:panelGrid columns="2">
+            <p:outputLabel value="Descrição"/>
+            <p:inputText value="#{categoriaMB.categoria.descricao}"/>
+        </p:panelGrid>
+        
+        <p:commandButton value="Salvar" action="#{categoriaMB.salvar()}" update="formCategoria" ajax="true"/>
+        <p:commandButton value="Excluir" action="#{categoriaMB.excluir(categoriaMB.categoria)}" update="formCategoria" ajax="true"/>
+        <p:commandButton value="Alterar" action="#{categoriaMB.editar()}" update="formCategoria" ajax="true"/>
+        
+        <p:dataTable>     
+            
+            <p:ajax event="cellEdit" listener="#{categoriaMB.editar}" update="dataTable"/>
+            
+            
+            <p:column headerText="Categoria">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{categoriaMB.descricao}" /></f:facet>
+                    <f:facet name="input"><p:inputText value="#{categoriaMB.descricao}" 
+                                                       style="width:100%" label="Descrição"/>
+                    </f:facet>
+
+                </p:cellEditor>
+            </p:column>         
+
+            <p:column headerText="Editar">
+                <p:commandButton value="Editar"
+                 title="Editar"
+                 actionListener="#{categoriaMB.editar()}"
+                 update="dataTable"
+                 ajax="true"
+                 />
+            </p:column>
+        </p:dataTable>        
+    </h:form>        
+</ui:composition>
