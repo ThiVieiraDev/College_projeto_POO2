@@ -78,6 +78,18 @@ public class ItemPedido implements Serializable, Teste {
 
     @Override
     public boolean validar() {
-        return true; //To change body of generated methods, choose Tools | Templates.
+        // Verifica se o ItemPedido incrementou Numero
+        if(this.getNumero() < 0){
+            return false;
+        }
+        // Verifica se o ItemPedido incrementou Quantidade
+        if(this.getQuantidade() < 0){
+            return false;
+        }
+        // Retorna True;
+        else
+        {
+            return true; //To change body of generated methods, choose Tools | Templates.
+        }
     }
 }

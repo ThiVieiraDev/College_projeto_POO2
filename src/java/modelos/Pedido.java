@@ -89,7 +89,22 @@ public class Pedido implements Serializable, Teste {
 
     @Override
     public boolean validar() {
-       return true;
+        // Verifica se o Pedido tem Cliente
+        if(this.getCliente() == null) {
+            return false;
+        }
+        // Verifica se o Pedido está incrementando o numero certo
+        if(this.getNumero() < 0 ) {
+            return false;
+        }
+        // Verifica se a Data está no formato Date
+        if(this.getData() != data) {
+            return false;
+        }
+        // Se tiver tudo ok, retorna true;
+        else {
+            return true;
+        }
     }
         
 }

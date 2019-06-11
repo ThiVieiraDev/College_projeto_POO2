@@ -86,7 +86,28 @@ public class Produto implements Serializable, Teste {
 
     @Override
     public boolean validar() {
-       return true;
+        
+        // Verifica se o Produto possui nome
+        if(this.getNome() == null){
+            return false;
+        }
+        // Verifica se o Produto possui preço
+        if(this.getPreco() > 0 ){
+            return false;
+        }
+        // Verifica se o Produto tem codigo
+        if(this.getCodigo() > 0){
+            return false;
+        }
+        // Verifica se o Produto tem categoria
+        if(this.getCategoria() == null){
+            return false;
+        }
+        // Retorna true se estiver tudo preenchido
+        else
+        {
+            return true;
+        }
     }
     
     
